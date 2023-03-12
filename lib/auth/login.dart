@@ -46,37 +46,81 @@ class LoginState extends State<Login> {
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             color: Colors.white)),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                          hintText: "UserName",
-                          hintStyle:
-                              TextStyle(fontSize: 20, color: Colors.white),
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 3, color: Colors.white))),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please Enter a UserName';
-                        }
-                        return null;
-                      },
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
                       child: TextFormField(
-                        decoration: const InputDecoration(
-                            hintText: "Password",
+                        style: TextStyle(color: Colors.white), 
+                        decoration:  InputDecoration(
+                            hintText: "UserName",
                             hintStyle:
                                 TextStyle(fontSize: 20, color: Colors.white),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 3, color: Colors.white))),
+                            focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                                width: 3, color: Colors.amber), //<-- SEE HERE
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                              color: Colors.white,
+                              width: 2.0,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide:  BorderSide(
+                              color: Colors.red.shade400,
+                              width: 2.0,
+                            ),
+                          ),
+                                    
+                                    ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please Enter a Password';
+                            return 'Please Enter a UserName';
                           }
                           return null;
                         },
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextFormField(
+                           style: TextStyle(color: Colors.white), 
+                          decoration:  InputDecoration(
+                              hintText: "Password",
+                              hintStyle:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                              focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: const BorderSide(
+                                  width: 3, color: Colors.amber), //<-- SEE HERE
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                                width: 2.0,
+                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide(
+                                color: Colors.red.shade400,
+                                width: 2.0,
+                              ),
+                            ),
+                                      
+                                      ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please Enter a Password';
+                            }
+                            return null;
+                          },
+                        ),
                       ),
                     ),
                     Container(

@@ -41,65 +41,118 @@ class SignUpState extends State<SignUp> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    const Text("Welcome back, Login!!",
+                    const Text("Welcome to Impact Chain",
                         style: TextStyle(
+                            fontFamily: 'DM',
                             fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white)),
-                    TextFormField(
-                      style: const TextStyle(fontSize: 20, color: Colors.white),
-                      decoration: const InputDecoration(
-                          hintText: "UserName",
-                          hintStyle:
-                              TextStyle(fontSize: 20, color: Colors.white),
-                          enabledBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(width: 3, color: Colors.white))),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please Enter a UserName';
-                        }
-                        return null;
-                      },
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                            color: Color.fromARGB(255, 255, 255, 255))),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 20),
+                              child: Text("Sign Up Here ",
+                                                    style: TextStyle(
+                              fontFamily: 'DM',
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 255, 255, 255))),
+                            ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: const InputDecoration(
-                            hintText: "Nationality",
+                        style: const TextStyle(fontSize: 20, color: Colors.white),
+                        decoration:   InputDecoration(
+                          
+                            hintText: "UserName",
                             hintStyle:
-                                TextStyle(fontSize: 20, color: Colors.white),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 3, color: Colors.white))),
+                            TextStyle(fontSize: 20, color: Colors.white),
+                                       
+                            focusedBorder:  OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                                width: 3,
+                                color: Colors.amber), //<-- SEE HERE
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: const BorderSide(
+                              color: Colors.white,
+                              width: 2.0,
+                            ),
+                          ),
+                            ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please Enter a Nationality';
+                            return 'Please Enter a UserName';
                           }
                           return null;
                         },
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-                      child: TextFormField(
-                        style:
-                            const TextStyle(fontSize: 20, color: Colors.white),
-                        decoration: const InputDecoration(
-                            hintText: "Password",
-                            hintStyle:
-                                TextStyle(fontSize: 20, color: Colors.white),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 3, color: Colors.white))),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please Enter a Password';
-                          }
-                          return null;
-                        },
+                      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8.0, left:8.0,bottom: 8.0),
+                        child: TextFormField(
+                          style:
+                              const TextStyle(fontSize: 20, color: Colors.white),
+                          decoration:  InputDecoration(
+                              hintText: "Nationality",
+                              hintStyle:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                              focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: const BorderSide(
+                                  width: 3, color: Colors.amber), //<-- SEE HERE
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                                width: 2.0,
+                              ),
+                            ),
+                                      
+                                      ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please Enter a Nationality';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            right: 8.0, left: 8.0, bottom: 8.0),
+                        child: TextFormField(
+                          style:
+                              const TextStyle(fontSize: 20, color: Colors.white),
+                          decoration:  InputDecoration(
+                              hintText: "Password",
+                              hintStyle:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                              focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide(
+                                  width: 3, color: Colors.amber.shade300), //<-- SEE HERE
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: const BorderSide(
+                                color: Colors.white,
+                                width: 2.0,
+                              ),
+                            ),
+                                      
+                                      ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please Enter a Password';
+                            }
+                            return null;
+                          },
+                        ),
                       ),
                     ),
                     Container(
@@ -122,13 +175,15 @@ class SignUpState extends State<SignUp> {
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
+              
                             minimumSize: const Size(200, 50)),
                         child: const Text(
-                          "Login",
+                          "Sign Up",
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Color.fromRGBO(55, 113, 91, 1)),
+                              
                         ),
                       ),
                     )
