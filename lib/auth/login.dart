@@ -62,7 +62,7 @@ class LoginState extends State<Login> {
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
                             borderSide: const BorderSide(
-                              color: Colors.white,
+                              color: Colors.white38,
                               width: 2.0,
                             ),
                           ),
@@ -101,7 +101,7 @@ class LoginState extends State<Login> {
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15.0),
                               borderSide: const BorderSide(
-                                color: Colors.white,
+                                color: Colors.white38,
                                 width: 2.0,
                               ),
                             ),
