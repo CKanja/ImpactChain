@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_auth_email/main.dart';
 //import 'package:firebase_auth_email/utils/utils.dart';
 import 'package:flutter/gestures.dart';
+import 'package:sdg_goals/auth/utils.dart';
 import '../main.dart';
 import '../Homepage.dart';
+import './forgotPassword.dart';
 
 
 class Login extends StatefulWidget {
@@ -201,7 +203,25 @@ class LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 42,),
+                     SizedBox(height: 24,),
+                     GestureDetector(
+                      // ignore: prefer_const_constructors
+                      child: Text('Forgot Password?',
+                      // ignore: prefer_const_constructors
+                      style: TextStyle(
+                        fontFamily: 'DM',
+                        fontSize: 20,
+                        decoration: TextDecoration.underline,
+                        color: Colors.white
+                      ),
+                      ),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => ForgotPasswordPage())
+                      ),
+                     ),
+
+
+                      SizedBox(height: 24,),
                       RichText(text: TextSpan(
                           style: TextStyle(color: Colors.white, fontFamily: 'DM'
                           ),
@@ -228,6 +248,9 @@ class LoginState extends State<Login> {
 
   Future signIn() async{
 
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) return;
+
     showDialog(context: context,
                barrierDismissible: false,
                builder: (context) => Center(child: CircularProgressIndicator(),
@@ -242,6 +265,8 @@ class LoginState extends State<Login> {
     }
     on FirebaseException catch(e) {
       print(e);
+
+      Utils.showSnackBar(e.message);
     }
     
       navigatorKey.currentState!.popUntil((route) => route.isFirst);

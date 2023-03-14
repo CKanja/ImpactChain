@@ -259,7 +259,8 @@ class SignUpState extends State<SignUp> {
     } on FirebaseException catch (e) {
       print(e);
 
-     // Utils.showSnackBar(e.message);
+      
+     Utils.showSnackBar(e.message);
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
