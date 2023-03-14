@@ -8,6 +8,7 @@ import 'package:sdg_goals/sdgCart.dart';
 import './models/sdgs.dart';
 import './singleSdgBody.dart';
 import 'Feedpage.dart';
+import './quiz.dart';
 import 'profile_page.dart';
 
 class Homepage extends StatelessWidget {
@@ -72,6 +73,15 @@ class Homepage extends StatelessWidget {
                       fontSize: 16,
                       color: Color(0xFF5D2B5C))),
             ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: ElevatedButton(
+                  child: Text("Take The Quiz"),
+                  onPressed: (() {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => QuizWidget()));
+                  }),
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 5),
               child: Image.asset("assets/images/sdgbar.jpg"),
