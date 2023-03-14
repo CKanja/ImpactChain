@@ -45,7 +45,8 @@ class LoginState extends State<Login> {
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white)),
+                            color: Colors.white)
+                            ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
                       child: TextFormField(

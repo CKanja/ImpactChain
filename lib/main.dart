@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sdg_goals/auth/utils.dart';
 import "./splash.dart";
 import './Homepage.dart';
 import 'Feedpage.dart';
+import 'auth/redirector.dart';
+import 'auth/utils.dart';
+
 
 // void main() {
 //   runApp(const MyApp());
@@ -14,6 +18,8 @@ Future main() async {
   runApp(MyApp());
 }
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -21,6 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      //scaffoldMessengerKey: Utils.messengerKey,
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.green,
@@ -31,6 +39,7 @@ class MyApp extends StatelessWidget {
       //   ),
       // ),
       home: const Splash(),
+      //home: MainPage(),
       //home: FeedPage(),
       //home: Homepage(),
     );

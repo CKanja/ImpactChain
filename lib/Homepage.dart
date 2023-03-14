@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:sdg_app/sdgCart.dart';
 import 'package:sdg_goals/sdgCart.dart';
@@ -23,17 +24,21 @@ class Homepage extends StatelessWidget {
         backgroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
-            color: Color(0xFF5D2B5C),
-            iconSize: 30,
-            onPressed: () {},
-          ),
-          IconButton(
             icon: const Icon(Icons.person_outlined),
             color: Color(0xFF5D2B5C),
             iconSize: 30,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => FeedPage() ));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => FeedPage()));
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.login_outlined),
+            color: Color(0xFF5D2B5C),
+            iconSize: 30,
+            onPressed: () {
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => FeedPage() ));
+              FirebaseAuth.instance.signOut();
             },
           ),
         ],

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import './auth/SignUp.dart';
+import './auth/redirector.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -20,7 +21,8 @@ class _SplashState extends State<Splash> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const SignUp(),
+            //builder: (context) => const SignUp(),
+            builder: (context) =>  MainPage(),
           ),
         );
       }),
