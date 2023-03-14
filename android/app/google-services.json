@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "303200411249",
+    "project_id": "impactchain-c3798",
+    "storage_bucket": "impactchain-c3798.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303200411249:android:b4e1f42db4b7a4f23b45d0",
+        "android_client_info": {
+          "package_name": "com.example.sdgs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303200411249-e055kjk8tegu559gf39tvqn4ekrh4714.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0PsAc2tuTJhg6wpFX38mSTJk9FjTPKhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303200411249-e055kjk8tegu559gf39tvqn4ekrh4714.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

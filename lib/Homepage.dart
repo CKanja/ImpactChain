@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:sdg_app/sdgCart.dart';
 import 'package:sdg_goals/sdgCart.dart';
@@ -7,6 +8,8 @@ import 'package:sdg_goals/sdgCart.dart';
 import './models/sdgs.dart';
 import './singleSdgBody.dart';
 import 'Feedpage.dart';
+import './quiz.dart';
+import 'profile_page.dart';
 
 class Homepage extends StatelessWidget {
   @override
@@ -23,17 +26,21 @@ class Homepage extends StatelessWidget {
         backgroundColor: Colors.white,
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
-            color: Color(0xFF5D2B5C),
-            iconSize: 30,
-            onPressed: () {},
-          ),
-          IconButton(
             icon: const Icon(Icons.person_outlined),
             color: Color(0xFF5D2B5C),
             iconSize: 30,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => FeedPage() ));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.login_outlined),
+            color: Color(0xFF5D2B5C),
+            iconSize: 30,
+            onPressed: () {
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => FeedPage() ));
+              FirebaseAuth.instance.signOut();
             },
           ),
         ],
@@ -66,6 +73,15 @@ class Homepage extends StatelessWidget {
                       fontSize: 16,
                       color: Color(0xFF5D2B5C))),
             ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: ElevatedButton(
+                  child: Text("Take The Quiz"),
+                  onPressed: (() {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => QuizWidget()));
+                  }),
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 10, bottom: 5),
               child: Image.asset("assets/images/sdgbar.jpg"),
