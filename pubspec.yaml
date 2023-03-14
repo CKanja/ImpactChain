@@ -40,6 +40,8 @@ dependencies:
   cloud_firestore: ^4.4.4
   firebase_auth: ^4.2.10
   email_validator: '^2.1.16'
+  hexcolor: ^3.0.1
+  font_awesome_flutter: ^10.4.0
 
   #firebase
   #firebase_auth: ^3.3.4

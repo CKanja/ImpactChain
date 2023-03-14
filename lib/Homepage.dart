@@ -8,6 +8,7 @@ import 'package:sdg_goals/sdgCart.dart';
 import './models/sdgs.dart';
 import './singleSdgBody.dart';
 import 'Feedpage.dart';
+import 'profile_page.dart';
 
 class Homepage extends StatelessWidget {
   @override
@@ -29,7 +30,7 @@ class Homepage extends StatelessWidget {
             iconSize: 30,
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => FeedPage()));
+                  context, MaterialPageRoute(builder: (context) => ProfilePage()));
             },
           ),
           IconButton(

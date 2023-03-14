@@ -29,11 +29,11 @@ class sdgBody extends StatelessWidget{
               child: Stack(
                 children: [
                   Container(
-                  height: MediaQuery.of(context).size.height * 1.2,
+                  height: MediaQuery.of(context).size.height * 1.3,
                   ),
                   Container(
                     //size.height * 0.1
-                    height: MediaQuery.of(context).size.height * 1.2,
+                    height: MediaQuery.of(context).size.height * 1.3,
                     margin: EdgeInsets.only(top: 50),
                     padding: EdgeInsets.only(
                       top: size.height * 0.12,
