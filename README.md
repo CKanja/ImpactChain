@@ -5,7 +5,7 @@ A new Flutter project which implements the idea of raising awareness about the U
 
 ## Setup for this project
 
-1. Clone this repo by running `git clone https://github.com/atlp-rwanda/elite-bn-fe.git`
+1. Clone this repo by running `https://github.com/CKanja/ImpactChain.git`
 2. Install all needed dependencies by running `flutter pub get`
 4. Start Local server by running `flutter run`
 
