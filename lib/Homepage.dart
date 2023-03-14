@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:sdg_goals/profile_page.dart';
 //import 'package:sdg_app/sdgCart.dart';
 import 'package:sdg_goals/sdgCart.dart';
 //import './bottomNavBar.dart';
@@ -33,7 +34,7 @@ class Homepage extends StatelessWidget {
             color: Color(0xFF5D2B5C),
             iconSize: 30,
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => FeedPage() ));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage() ));
             },
           ),
         ],

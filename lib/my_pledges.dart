@@ -10,7 +10,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 import 'widgets/theme_helper.dart';
 
-class FeedPage extends StatelessWidget {
+class MyPledges extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -83,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
           );
           return Column(
-            
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const Divider(
@@ -117,13 +116,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   size: 14.0,
                 ),
               ),
+              
             ],
-
           );
         },
       ),
-     
-      );
-    // );
+   
+    );
   }
 }
