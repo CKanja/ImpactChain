@@ -57,13 +57,20 @@ class LoginState extends State<Login> {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        
         body: SingleChildScrollView(
           child: Container(
-              color: const Color.fromRGBO(50, 0, 69, 1),
+              //color: const Color.fromRGBO(50, 0, 69, 1),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("./assets/images/bg1.jpg"),
+                    fit: BoxFit.cover),
+              ),
               width: width,
               height: height,
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 100, 0, 0),
+                
                 child: Form(
                   key: _formKey,
                   child: Column(

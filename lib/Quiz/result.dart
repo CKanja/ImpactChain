@@ -25,9 +25,25 @@ class Result extends StatelessWidget {
     return Container(
       child: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("You have finished the Quiz and this is your score"),
-            Text(resultPhrase)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("You have finished the Quiz and this is your score", style: TextStyle(
+                fontFamily: 'DM',
+                fontSize: 20,
+              ),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('${resultScore}', style: TextStyle(
+                fontFamily: 'DM',
+                fontSize: 30,
+                color: Color(0xFF3D003B),
+            
+              ),),
+            )
           ],
         ),
       ),

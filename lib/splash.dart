@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:sdg_goals/bottomnav.dart';
+import 'package:sdg_goals/quiz_welcome.dart';
 import './auth/SignUp.dart';
 import './auth/redirector.dart';
 
@@ -23,8 +24,8 @@ class _SplashState extends State<Splash> {
           context,
           MaterialPageRoute(
             //builder: (context) => const SignUp(),
-            builder: (context) =>  MainPage(),
-            //builder: (context) => bottomNav(),
+           builder: (context) =>  MainPage(),
+            //builder: (context) => quizWelcome(),
           ),
         );
       }),
@@ -37,7 +38,11 @@ class _SplashState extends State<Splash> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        color: const Color.fromRGBO(50, 0, 69, 1),
+        //color: const Color.fromRGBO(50, 0, 69, 1),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("./assets/images/bg1.jpg"), fit: BoxFit.cover),
+        ),
         width: width,
         height: height,
         child: Center(

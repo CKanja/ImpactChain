@@ -57,7 +57,12 @@ class SignUpState extends State<SignUp> {
       home: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-              color: const Color.fromRGBO(50, 0, 69, 1),
+              //color: const Color.fromRGBO(50, 0, 69, 1),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("./assets/images/bg1.jpg"),
+                    fit: BoxFit.cover),
+              ),
               width: width,
               height: height,
               child: Container(
