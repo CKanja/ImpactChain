@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -46,7 +46,7 @@ class _bottomNavState extends State<bottomNav> {
                     text: 'SDG Quiz'),
             GButton(icon: Icons.feed_outlined, text: 'Feed'),
             
-            GButton(icon: Icons.speaker_notes_rounded, text: 'My pledge'),
+            GButton(icon: Icons.comment_bank_outlined, text: 'My pledge'),
           ],
           selectedIndex: _selectedIndex,
             onTabChange: (index) {

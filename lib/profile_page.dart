@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -203,7 +204,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       color: Theme.of(context).accentColor),
                 ),
                 onTap: () {
-                  SystemNavigator.pop();
+                  //SystemNavigator.pop();
+                  FirebaseAuth.instance.signOut();
                 },
               ),
             ],
