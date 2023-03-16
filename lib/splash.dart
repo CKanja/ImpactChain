@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sdg_goals/bottomnav.dart';
 import './auth/SignUp.dart';
 import './auth/redirector.dart';
 
@@ -23,6 +24,7 @@ class _SplashState extends State<Splash> {
           MaterialPageRoute(
             //builder: (context) => const SignUp(),
             builder: (context) =>  MainPage(),
+            //builder: (context) => bottomNav(),
           ),
         );
       }),
