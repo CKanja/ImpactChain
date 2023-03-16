@@ -42,6 +42,7 @@ dependencies:
   email_validator: '^2.1.16'
   hexcolor: ^3.0.1
   font_awesome_flutter: ^10.4.0
+  google_nav_bar: ^5.0.6
 
   #firebase
   #firebase_auth: ^3.3.4

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+      primarySwatch: Colors.blueGrey,
       ),
       // home: Scaffold(
       //   body: Column(

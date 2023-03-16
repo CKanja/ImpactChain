@@ -81,7 +81,7 @@ class QuizWidgetState extends State<QuizWidget> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blueGrey,
       ),
       home: Scaffold(
           appBar: AppBar(
