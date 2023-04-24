@@ -11,7 +11,9 @@ A new Flutter project which implements the idea of raising awareness about the U
 
 ## Tools used
 
-1. [GitHub and Git](https://github.com/) for Version control
+1. [Figma UI/UX design](https://www.figma.com/proto/9iaWA9FtxBPSfZNhWTB9ow/*SDGs?node-id=68-60&scaling=scale-down&page-id=0%3A1&starting-point-node-id=68%3A60&show-proto-sidebar=1) 
+2. [GitHub and Git](https://github.com/) for Version control
+
 
 
 
