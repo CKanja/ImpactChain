@@ -7,6 +7,7 @@ import 'create_pledge.dart';
 import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'widgets/theme_helper.dart';
 
@@ -116,12 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   size: 14.0,
                 ),
               ),
-              
             ],
           );
         },
       ),
-   
     );
   }
 }
