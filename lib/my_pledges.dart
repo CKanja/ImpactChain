@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'Homepage.dart';
 
 class MyPledges extends StatelessWidget {
   @override
@@ -30,7 +31,42 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SDG List'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_circle_left),
+          color: const Color(0xFF5D2B5C),
+          iconSize: 30,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Homepage(),
+              ),
+            );
+          },
+        ),
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text('Daily Updates',
+            style: TextStyle(
+              fontFamily: 'DM',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            )),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            color: const Color(0xFF5D2B5C),
+            iconSize: 30,
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.person_outlined),
+            color: const Color(0xFF5D2B5C),
+            iconSize: 30,
+            onPressed: () {},
+          ),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _sdgCollection.snapshots(),
@@ -46,6 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
           final sdgList = snapshot.data!.docs
               .map((document) => Sdg.fromFirestore(document))
               .toList();
+
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text('My Pledge',
+                style: TextStyle(
+                  fontFamily: 'DM',
+                  fontSize: 20,
+                  color: Colors.black,
+                )),
+          );
 
           return ListView.builder(
             itemCount: sdgList.length,
@@ -71,15 +117,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         height: 12.0,
                       ),
-                      Text(
-                        sdg.country ?? "No Text",
-                        style:
-                            const TextStyle(fontFamily: "DM", fontSize: 12.0),
-                      ),
+                      // Text(
+                      //   sdg.country ?? "No Text",
+                      //   style:
+                      //       const TextStyle(fontFamily: "DM", fontSize: 12.0),
+                      // ),
                     ]),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14.0,
+                // trailing: const Icon(
+                //   Icons.arrow_forward_ios,
+                //   size: 14.0,
+                // ),
+                trailing: Text(
+                  sdg.country ?? "No Text",
+                  style: const TextStyle(fontFamily: "DM", fontSize: 12.0),
                 ),
               );
             },
