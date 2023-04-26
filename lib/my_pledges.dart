@@ -53,9 +53,34 @@ class _HomeScreenState extends State<HomeScreen> {
               final sdg = sdgList[index];
 
               return ListTile(
-                title: Text(sdg.title ?? 'No Text'),
-                subtitle: Text(sdg.shortDescription ?? 'No Text'),
-                trailing: Text(sdg.country ?? 'No Text'),
+                // leading: CircleAvatar(
+                //   radius: 32.0,
+                //   child: Image.asset(_model.avatarUrl),
+                // ),
+                title: Text(
+                  sdg.title ?? "No Text",
+                  style: const TextStyle(fontFamily: "DM"),
+                ),
+                subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(sdg.shortDescription ?? "No Text",
+                          style: const TextStyle(fontFamily: "DM")),
+                      Text(sdg.detailedInformation ?? "No Text",
+                          style: const TextStyle(fontFamily: "DM")),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Text(
+                        sdg.country ?? "No Text",
+                        style:
+                            const TextStyle(fontFamily: "DM", fontSize: 12.0),
+                      ),
+                    ]),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 14.0,
+                ),
               );
             },
           );
@@ -91,3 +116,22 @@ class Sdg {
     );
   }
 }
+
+
+
+
+// class SdgDetailsWidget extends StatelessWidget {
+//   final Sdg sdg;
+
+//   const SdgDetailsWidget({required this.sdg});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('SDG Details'),
+//       ),
+      
+//     );
+//   }
+// }
