@@ -53,9 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
               final sdg = sdgList[index];
 
               return ListTile(
-                title: Text(sdg.title),
-                subtitle: Text(sdg.shortDescription),
-                trailing: Text(sdg.country),
+                title: Text(sdg.title ?? 'No Text'),
+                subtitle: Text(sdg.shortDescription ?? 'No Text'),
+                trailing: Text(sdg.country ?? 'No Text'),
               );
             },
           );
@@ -66,18 +66,18 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Sdg {
-  final String title;
-  final String shortDescription;
-  final String detailedInformation;
-  final int sdgNumber;
-  final String country;
+  final String? title;
+  final String? shortDescription;
+  final String? detailedInformation;
+  final int? sdgNumber;
+  final String? country;
 
   Sdg({
     required this.title,
-    required this.shortDescription,
-    required this.detailedInformation,
-    required this.sdgNumber,
-    required this.country,
+    this.shortDescription,
+    this.detailedInformation,
+    this.sdgNumber,
+    this.country,
   });
 
   factory Sdg.fromFirestore(DocumentSnapshot doc) {
