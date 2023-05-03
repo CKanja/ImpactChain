@@ -1,14 +1,6 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
-
 import 'package:flutter/material.dart';
-import 'models/feed.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'Homepage.dart';
-import 'create_pledge.dart';
-import 'package:flutter/gestures.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hexcolor/hexcolor.dart';
-
-import 'widgets/theme_helper.dart';
 
 class MyPledges extends StatelessWidget {
   @override
@@ -26,6 +18,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late CollectionReference _sdgCollection;
+
+  @override
+  void initState() {
+    super.initState();
+    // Create a reference to the 'sdg' collection in Firestore
+    _sdgCollection = FirebaseFirestore.instance.collection('sdg');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,12 +68,21 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: FeedModel.dummyData.length,
-        itemBuilder: (context, index) {
-          FeedModel _model = FeedModel.dummyData[index];
-          var postDate = _model.datetime;
-          var postAuthor = _model.author;
+      body: StreamBuilder<QuerySnapshot>(
+        stream: _sdgCollection.snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+
+          final sdgList = snapshot.data!.docs
+              .map((document) => Sdg.fromFirestore(document))
+              .toList();
+
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text('My Pledge',
@@ -82,46 +92,96 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.black,
                 )),
           );
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Divider(
-                height: 28.0,
-              ),
-              ListTile(
-                leading: CircleAvatar(
-                  radius: 32.0,
-                  child: Image.asset(_model.avatarUrl),
-                ),
+
+          return ListView.builder(
+            itemCount: sdgList.length,
+            itemBuilder: (BuildContext context, int index) {
+              final sdg = sdgList[index];
+
+              return ListTile(
+                // leading: CircleAvatar(
+                //   radius: 32.0,
+                //   child: Image.asset(_model.avatarUrl),
+                // ),
                 title: Text(
-                  _model.name,
+                  sdg.title ?? "No Text",
                   style: const TextStyle(fontFamily: "DM"),
                 ),
                 subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(_model.message,
+                      Text(sdg.shortDescription ?? "No Text",
+                          style: const TextStyle(fontFamily: "DM")),
+                      Text(sdg.detailedInformation ?? "No Text",
                           style: const TextStyle(fontFamily: "DM")),
                       const SizedBox(
                         height: 12.0,
                       ),
-                      Text(
-                        '$postAuthor - $postDate',
-                        style:
-                            const TextStyle(fontFamily: "DM", fontSize: 12.0),
-                      ),
+                      // Text(
+                      //   sdg.country ?? "No Text",
+                      //   style:
+                      //       const TextStyle(fontFamily: "DM", fontSize: 12.0),
+                      // ),
                     ]),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14.0,
+                // trailing: const Icon(
+                //   Icons.arrow_forward_ios,
+                //   size: 14.0,
+                // ),
+                trailing: Text(
+                  sdg.country ?? "No Text",
+                  style: const TextStyle(fontFamily: "DM", fontSize: 12.0),
                 ),
-              ),
-              
-            ],
+              );
+            },
           );
         },
       ),
-   
     );
   }
 }
+
+class Sdg {
+  final String? title;
+  final String? shortDescription;
+  final String? detailedInformation;
+  final int? sdgNumber;
+  final String? country;
+
+  Sdg({
+    required this.title,
+    this.shortDescription,
+    this.detailedInformation,
+    this.sdgNumber,
+    this.country,
+  });
+
+  factory Sdg.fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    return Sdg(
+      title: data['title'],
+      shortDescription: data['shortDescription'],
+      detailedInformation: data['detailedInformation'],
+      sdgNumber: data['sdgNumber'],
+      country: data['country'],
+    );
+  }
+}
+
+
+
+
+// class SdgDetailsWidget extends StatelessWidget {
+//   final Sdg sdg;
+
+//   const SdgDetailsWidget({required this.sdg});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('SDG Details'),
+//       ),
+      
+//     );
+//   }
+// }
