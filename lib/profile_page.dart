@@ -1,12 +1,15 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sdg_goals/Feedpage.dart';
 import 'package:sdg_goals/create_pledge.dart';
 import 'package:sdg_goals/my_pledges.dart';
+import 'dart:io';
 // import 'package:flutter_login_ui/pages/login_page.dart';
 // import 'package:flutter_login_ui/pages/splash_screen.dart';
 // import 'package:flutter_login_ui/pages/widgets/header_widget.dart';
@@ -25,6 +28,27 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   double _drawerIconSize = 24;
   double _drawerFontSize = 17;
+  String imageUrl = " ";
+
+  void uploadImage() async {
+    final image = await ImagePicker().pickImage(source: 
+    ImageSource.gallery,
+    maxWidth: 512,
+    maxHeight: 512,
+    imageQuality: 75);
+
+    //await FirebaseAuth.instance.signInAnonymously();
+    Reference ref = FirebaseStorage.instance.ref().child("profilepic.jpg");
+
+    await ref.putFile(File(image!.path));
+    ref.getDownloadURL().then((value) {
+        print(value);
+        setState(() {
+          imageUrl = value;
+        });
+    });
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -225,24 +249,57 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Column(
                 children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      border: Border.all(width: 5, color: Colors.white),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 20,
-                          offset: const Offset(5, 5),
-                        ),
-                      ],
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      size: 80,
-                      color: Colors.grey.shade300,
+                  GestureDetector(
+
+                  onTap: () {
+                    uploadImage();
+                  },
+
+                    child: Container(
+                      width: 150,
+                      height: 150,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(width: 5, color: Colors.white),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 20,
+                            offset: const Offset(5, 5),
+                          ),
+                        ],
+                      ),
+                      // ******* will change this ****
+                      // child: Icon(
+                      //   Icons.person,
+                      //   size: 80,
+                      //   color: Colors.grey.shade300,
+                      // ),
+                      // ***********
+                      // child: imageUrl == " " ? Icon(
+                      //   Icons.person, size: 80, color: Colors.grey.shade300,
+                      //   ) : Image.network(imageUrl)
+                      // *******
+                      // child: SizedBox(
+                      //   height: 120,
+                      //     width: 120,
+                      //   child: ClipRRect(
+                      //     borderRadius: BorderRadius.circular(100),
+                      //     child: imageUrl == " "
+                      //           ? Icon(
+                      //               Icons.person,
+                      //               size: 80,
+                      //               color: Colors.grey.shade300,
+                      //             )
+                      //           : Image.network(imageUrl),
+                      //   ),
+                      //   // ******
+                      // )
+                      child: CircleAvatar(
+                        backgroundImage:  NetworkImage(imageUrl),
+                      ),
                     ),
                   ),
                   SizedBox(

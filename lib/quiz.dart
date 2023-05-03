@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sdg_goals/quiz_welcome.dart';
+import 'Homepage.dart';
 import 'Quiz/quiz.dart';
 import 'Quiz/result.dart';
 
@@ -82,11 +84,25 @@ class QuizWidgetState extends State<QuizWidget> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         //primarySwatch: Colors.blueGrey,
-        primaryColor: Color(0xFF3D003B),
+        //primaryColor: const Color(0xFF5D2B5C),
+        primarySwatch: Colors.purple
       ),
       home: Scaffold(
           appBar: AppBar(
             title: const Text("SDG Quiz"),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_circle_left),
+              color: Color.fromARGB(255, 255, 255, 255),
+              iconSize: 30,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => quizWelcome(),
+                  ),
+                );
+              },
+            ),
           ),
           body: questionIndex < questions.length
               ? Quiz(answerQuestion, questions, questionIndex)
