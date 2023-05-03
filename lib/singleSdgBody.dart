@@ -58,7 +58,8 @@ class sdgBody extends StatelessWidget{
                         child: ClipRRect(
                           //borderRadius: BorderRadius.circular(32),
                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100), bottomRight: Radius.circular(100)),
-                          child: Image.asset(sdg.image))),
+                          child: Hero(tag: "${sdg.sdgNum}",
+                          child: Image.asset(sdg.image)))),
                     ),
               
                     Positioned(
