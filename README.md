@@ -1,7 +1,8 @@
 # Impact chain
 
 A new Flutter project which implements the idea of raising awareness about the United Nation's Sustainable Development Goals.
-[Video Walkthrough](https://drive.google.com/file/d/1bi8FmE28nwjJOJBt5vgxQlULW3axYRbr/view?usp=sharing): A demostration of how the app works.
+
+- [Video Walkthrough](https://drive.google.com/file/d/1bi8FmE28nwjJOJBt5vgxQlULW3axYRbr/view?usp=sharing): A demostration of how the app works.
 
 ## Setup for this project
 
