@@ -1,8 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:awesome_notifications/awesome_notifications_empty.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:sdg_goals/my_pledges.dart';
 
 import 'profile_page.dart';
 import 'services/database.dart';
@@ -41,6 +44,28 @@ class _CreatePledgeState extends State<CreatePledge> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+
+  @override
+  void initState() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+        if (!isAllowed) {
+          AwesomeNotifications().requestPermissionToSendNotifications();
+        }
+    });
+
+
+    super.initState();
+  }
+
+  triggerNotification() {
+    AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: 10,
+        channelKey: 'basic_channel',
+        title: 'Pledge Update',
+        body: 'New SDG pledge has been added!'),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -262,6 +287,7 @@ class _CreatePledgeState extends State<CreatePledge> {
                           decoration:
                               ThemeHelper().buttonBoxDecoration(context),
                           child: ElevatedButton(
+                             key: const Key('myButton'),
                             style: ThemeHelper().buttonStyle(),
                             child: Padding(
                               padding:
@@ -317,7 +343,7 @@ class _CreatePledgeState extends State<CreatePledge> {
 
                                   Navigator.of(context).pushAndRemoveUntil(
                                       MaterialPageRoute(
-                                          builder: (context) => ProfilePage()),
+                                          builder: (context) => HomeScreen()),
                                       (Route<dynamic> route) => false);
                                 }).catchError((error) {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -327,8 +353,11 @@ class _CreatePledgeState extends State<CreatePledge> {
                                     ),
                                   );
                                 });
-                              }
-                            },
+                              };
+
+                       triggerNotification();
+
+                       },
                           ),
                         ),
                       ],

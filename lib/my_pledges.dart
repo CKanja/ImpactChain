@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sdg_goals/profile_page.dart';
 import 'Homepage.dart';
 
 class MyPledges extends StatelessWidget {
@@ -64,7 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.person_outlined),
             color: const Color(0xFF5D2B5C),
             iconSize: 30,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+              MaterialPageRoute(builder: (context) => ProfilePage()));
+            },
           ),
         ],
       ),
