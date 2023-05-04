@@ -15,7 +15,11 @@ class bottomNav extends StatefulWidget{
   State<bottomNav> createState() => _bottomNavState();
 }
 
-class _bottomNavState extends State<bottomNav> {
+class _bottomNavState extends State<bottomNav> with AutomaticKeepAliveClientMixin {
+
+  @override
+  bool get wantKeepAlive => true;
+
   int _selectedIndex = 0;
 
   List<Widget> _screens = [Homepage(), quizWelcome(), FeedPage(), CreatePledge()];
